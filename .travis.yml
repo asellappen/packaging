@@ -1,3 +1,14 @@
+# ----------------------------------------------------------------------------
+#
+# Package             : pypa
+# Source Repo         : https://github.com/pypa/packaging
+# Travis Job Link     : https://travis-ci.com/github/asellappen/pypa/
+# Created travis.yml  : No
+# Maintainer          : Arumugam N S <asellappen@yahoo.com> / Priya Seth<sethp@us.ibm.com>
+#
+# Script License      : Apache License, Version 2 or later
+#
+# ----------------------------------------------------------------------------
 language: python
 cache: pip
 python: 3.8
@@ -22,6 +33,34 @@ matrix:
       env: NOXSESSION=tests-3.8
     - env: NOXSESSION=lint
     - env: NOXSESSION=docs
+    - python: 2.7
+      env: NOXSESSION=tests-2.7
+      arch: ppc64le
+    - python: pypy
+      env: NOXSESSION=tests-pypy
+      arch: ppc64le
+    - python: pypy3
+      env: NOXSESSION=tests-pypy3
+      arch: ppc64le
+    - python: 3.4
+      env: NOXSESSION=tests-3.4
+      arch: ppc64le
+    - python: 3.5
+      env: NOXSESSION=tests-3.5
+      arch: ppc64le
+    - python: 3.6
+      env: NOXSESSION=tests-3.6
+      arch: ppc64le
+    - python: 3.7
+      env: NOXSESSION=tests-3.7
+      arch: ppc64le
+    - python: 3.8
+      env: NOXSESSION=tests-3.8
+      arch: ppc64le
+    - env: NOXSESSION=lint
+      arch: ppc64le
+    - env: NOXSESSION=docs
+      arch: ppc64le
 
 install:
   - pyenv global 3.7.1
