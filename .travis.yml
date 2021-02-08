@@ -77,14 +77,14 @@ install:
       python -V;
       pyenv global $PYTHON_VERSION ;
       pyenv versions;
-      python3.8 -m pip install nox;
+      python3.7 -m pip install nox;
     else
       pyenv global 3.7.1;
       python3.7 -m pip install nox;
     fi
 script:
   - if [[ "${TRAVIS_CPU_ARCH}" == "ppc64le" ]]; then
-      python3.8 -m nox;
+      python3.7 -m nox;
     else
       python3.7 -m nox;
     fi
