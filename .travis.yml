@@ -11,7 +11,7 @@
 # ----------------------------------------------------------------------------
 language: python
 cache: pip
-python: 3.8
+python: 3.7
 
 matrix:
   include:
@@ -80,10 +80,10 @@ install:
     else
       pyenv global 3.7.1;
     fi
-  - python3 -m pip install nox
+  - python3.7 -m pip install nox
 
 script:
-  - python3 -m nox
+  - python3.7 -m nox
 
 notifications:
   irc:
