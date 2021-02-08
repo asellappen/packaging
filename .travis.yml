@@ -13,7 +13,6 @@ language: python
 cache: pip
 python: 3.8
 
-
 matrix:
   include:
     - python: 3.6
@@ -38,14 +37,28 @@ install:
       python -V;
       pyenv global  python3.6;
       pyenv versions;
-      python3.6 -m pip install nox;
+      case "$NOXSESSION" in
+        tests-3.6)
+          python3.6 -m pip install nox
+          ;;
+        tests-3.7)
+          python3.6 -m pip install nox
+          ;;
+      esac
     else
       pyenv global 3.7.1;
       python3.7 -m pip install nox;
     fi
 script:
   - if [[ "${TRAVIS_CPU_ARCH}" == "ppc64le" ]]; then
-      python3.6 -m nox;
+      case "$NOXSESSION" in
+        tests-3.6)
+          python3.6 -m nox
+          ;;
+        tests-3.7)
+          python3.7 -m nox
+          ;;
+      esac
     else
       python3.7 -m nox;
     fi
