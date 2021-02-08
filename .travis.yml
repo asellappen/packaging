@@ -66,6 +66,7 @@ install:
       export CFLAGS=-I/usr/include/openssl;
       export LDFLAGS=-L/usr/lib64;
       pyenv versions;
+      python -V;
     else
       pyenv global 3.7.1;
     fi
