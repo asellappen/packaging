@@ -12,7 +12,7 @@
 language: python
 cache: pip
 python: 3.8
-dist: focal
+dist: bionic
 
 matrix:
   include:
