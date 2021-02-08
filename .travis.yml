@@ -65,7 +65,8 @@ install:
       source ~/.bashrc;
       export CFLAGS=-I/usr/include/openssl;
       export LDFLAGS=-L/usr/lib64;
-      pyenv global 3.7.0;
+      pyenv global;
+      #pyenv global 3.7.0;
     else
       pyenv global 3.7.1;
     fi
