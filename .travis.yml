@@ -17,11 +17,11 @@ python: 3.8
 matrix:
   include:
    - python: 3.6
-      env: NOXSESSION=tests-3.6
-      arch: ppc64le
+     env: NOXSESSION=tests-3.6
+     arch: ppc64le
    - python: 3.7
-      env: NOXSESSION=tests-3.7
-      arch: ppc64le
+     env: NOXSESSION=tests-3.7
+     arch: ppc64le
 install:
   - if [[ "${TRAVIS_CPU_ARCH}" == "ppc64le" ]]; then
       curl https://pyenv.run | bash;
