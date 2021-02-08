@@ -67,16 +67,17 @@ install:
       export LDFLAGS=-L/usr/lib64;
       pyenv versions;
       python -V;
-      pyenv global  python3.7 ;
+ #     pyenv global  python3.7 ;
+      pyenv global  python3.6 ;
       pyenv versions;
-      python3.7 -m pip install nox;
+      python3.6 -m pip install nox;
     else
       pyenv global 3.7.1;
       python3.7 -m pip install nox;
     fi
 script:
   - if [[ "${TRAVIS_CPU_ARCH}" == "ppc64le" ]]; then
-      python3.7 -m nox;
+      python3.6 -m nox;
     else
       python3.7 -m nox;
     fi
