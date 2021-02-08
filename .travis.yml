@@ -40,30 +40,22 @@ matrix:
     - python: 3.4
       env: NOXSESSION=tests-3.4
       arch: ppc64le
-      env: PYTHON_VERSION=3.4
     - python: 3.5
       env: NOXSESSION=tests-3.5
       arch: ppc64le
-      env: PYTHON_VERSION=3.5
     - python: 3.6
       env: NOXSESSION=tests-3.6
-      env: PYTHON_VERSION=3.6
       arch: ppc64le
     - python: 3.7
       env: NOXSESSION=tests-3.7
       arch: ppc64le
-      env: PYTHON_VERSION=3.7
     - python: 3.8
       env: NOXSESSION=tests-3.8
-      env: PYTHON_VERSION=3.7
       arch: ppc64le
     - env: NOXSESSION=lint
       arch: ppc64le
-      env: PYTHON_VERSION=3.8
     - env: NOXSESSION=docs
       arch: ppc64le
-      env: PYTHON_VERSION=3.8
-
 install:
   - if [[ "${TRAVIS_CPU_ARCH}" == "ppc64le" ]]; then
       curl https://pyenv.run | bash;
@@ -75,7 +67,7 @@ install:
       export LDFLAGS=-L/usr/lib64;
       pyenv versions;
       python -V;
-      pyenv global $PYTHON_VERSION ;
+      pyenv global  python3.7 ;
       pyenv versions;
       python3.7 -m pip install nox;
     else
