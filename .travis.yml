@@ -36,12 +36,6 @@ matrix:
     - python: 2.7
       env: NOXSESSION=tests-2.7
       arch: ppc64le
-    - python: pypy
-      env: NOXSESSION=tests-pypy
-      arch: ppc64le
-    - python: pypy3
-      env: NOXSESSION=tests-pypy3
-      arch: ppc64le
     - python: 3.4
       env: NOXSESSION=tests-3.4
       arch: ppc64le
@@ -63,6 +57,13 @@ matrix:
       arch: ppc64le
 
 install:
+  - if [[ "${TRAVIS_CPU_ARCH}" == "arm64" ]]; then
+      curl https://pyenv.run | bash;
+      export PATH="~/.pyenv/bin:$PATH";
+      eval "$(pyenv init -)";
+      eval "$(pyenv virtualenv-init -)";
+      source ~/.bashrc;
+    fi
   - pyenv global 3.7.1
   - python3.7 -m pip install nox
 
