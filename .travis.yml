@@ -12,6 +12,7 @@
 language: python
 cache: pip
 python: 3.8
+dist: focal
 
 matrix:
   include:
