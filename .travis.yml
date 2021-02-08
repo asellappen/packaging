@@ -11,7 +11,7 @@
 # ----------------------------------------------------------------------------
 language: python
 cache: pip
-python: 3.7
+python: 3.8
 
 matrix:
   include:
@@ -75,15 +75,15 @@ install:
       export LDFLAGS=-L/usr/lib64;
       pyenv versions;
       python -V;
-      pyenv global PYTHON_VERSION ;
+      pyenv global 'PYTHON_VERSION' ;
       pyenv versions;
     else
       pyenv global 3.7.1;
     fi
-  - python3.7 -m pip install nox
+  - python3.8 -m pip install nox
 
 script:
-  - python3.7 -m nox
+  - python3.8 -m nox
 
 notifications:
   irc:
