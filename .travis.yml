@@ -67,6 +67,8 @@ install:
       export LDFLAGS=-L/usr/lib64;
       pyenv versions;
       python -V;
+      pyenv global 3.7.0;
+      pyenv versions;
     else
       pyenv global 3.7.1;
     fi
