@@ -80,7 +80,6 @@ script:
     else
       python3.7 -m nox;
     fi
-
 notifications:
   irc:
     channels:
