@@ -67,7 +67,6 @@ install:
       export LDFLAGS=-L/usr/lib64;
       pyenv versions;
       python -V;
- #     pyenv global  python3.7 ;
       pyenv global  python3.6 ;
       pyenv versions;
       python3.6 -m pip install nox;
