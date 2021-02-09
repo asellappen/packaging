@@ -11,7 +11,7 @@
 # ----------------------------------------------------------------------------
 language: python
 cache: pip
-python: 3.7
+python: 3.8
 
 matrix:
   include:
@@ -46,6 +46,7 @@ matrix:
       arch: ppc64le
     - env: NOXSESSION=docs
       arch: ppc64le
+      python: 3.9
 install:
   - if [[ "${TRAVIS_CPU_ARCH}" == "ppc64le" ]]; then
       curl https://pyenv.run | bash;
