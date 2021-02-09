@@ -24,6 +24,10 @@ matrix:
     - python: 3.8
       env: NOXSESSION=tests-3.8
       arch: ppc64le
+    - env: NOXSESSION=lint
+      arch: ppc64le
+    - env: NOXSESSION=docs
+      arch: ppc64le
 install:
   - if [[ "${TRAVIS_CPU_ARCH}" == "ppc64le" ]]; then
       curl https://pyenv.run | bash;
@@ -36,16 +40,16 @@ install:
       pyenv versions;
       python -V;
       case "$NOXSESSION" in
-        tests-3.6)
+        "tests-3.6")
           pyenv global  python3.6;
           python3.6 -m pip install nox
           ;;
-        tests-3.7)
+        "tests-3.7" | "lint" | "docs" )
           pyenv global  python3.7;
           python3.7 -m pip install nox
           ;;
-        tests-3.8)
-          pyenv global  python3.8
+        "tests-3.8")
+          pyenv global  python3.8;
           python3.8 -m pip install nox
           ;;
       esac
@@ -56,13 +60,13 @@ install:
 script:
   - if [[ "${TRAVIS_CPU_ARCH}" == "ppc64le" ]]; then
       case "$NOXSESSION" in
-        tests-3.6)
+        "tests-3.6")
           python3.6 -m nox
           ;;
-        tests-3.7)
+        "tests-3.7" | "lint" | "docs" )
           python3.7 -m nox
           ;;
-        tests-3.8)
+        "tests-3.8")
           python3.8 -m nox
           ;;
       esac
