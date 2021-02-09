@@ -70,7 +70,7 @@ script:
           python3.8 -m nox
           ;;
         "lint")
-          python3.9 -m nox
+          python3.7 -m nox
           ;;
         "docs" )
           python3.9 -m nox
