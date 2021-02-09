@@ -15,6 +15,33 @@ python: 3.8
 
 matrix:
   include:
+    - python: 2.7
+      env: NOXSESSION=tests-2.7
+    - python: pypy
+      env: NOXSESSION=tests-pypy
+    - python: pypy3
+      env: NOXSESSION=tests-pypy3
+    - python: 3.4
+      env: NOXSESSION=tests-3.4
+    - python: 3.5
+      env: NOXSESSION=tests-3.5
+    - python: 3.6
+      env: NOXSESSION=tests-3.6
+    - python: 3.7
+      env: NOXSESSION=tests-3.7
+    - python: 3.8
+      env: NOXSESSION=tests-3.8
+    - env: NOXSESSION=lint
+    - env: NOXSESSION=docs
+    - python: 2.7
+      env: NOXSESSION=tests-2.7
+      arch: ppc64le
+    - python: 3.4
+      env: NOXSESSION=tests-3.4
+      arch: ppc64le
+    - python: 3.5
+      env: NOXSESSION=tests-3.5
+      arch: ppc64le
     - python: 3.6
       env: NOXSESSION=tests-3.6
       arch: ppc64le
@@ -37,18 +64,28 @@ install:
       source ~/.bashrc;
       export CFLAGS=-I/usr/include/openssl;
       export LDFLAGS=-L/usr/lib64;
-      pyenv versions;
-      python -V;
       case "$NOXSESSION" in
+        "tests-2.7")
+          pyenv global  python2.7;
+          python2.7 -m pip install nox
+          ;;
+        "tests-3.4")
+          pyenv global  python3.4;
+          python3.4 -m pip install nox
+          ;;
+        "tests-3.5")
+          pyenv global  python3.5;
+          python3.5 -m pip install nox
+          ;;
         "tests-3.6")
           pyenv global  python3.6;
           python3.6 -m pip install nox
           ;;
-        "tests-3.7" | "lint" | "docs" )
+        "tests-3.7")
           pyenv global  python3.7;
           python3.7 -m pip install nox
           ;;
-        "tests-3.8")
+        "tests-3.8"  | "lint" | "docs" )
           pyenv global  python3.8;
           python3.8 -m pip install nox
           ;;
@@ -60,13 +97,22 @@ install:
 script:
   - if [[ "${TRAVIS_CPU_ARCH}" == "ppc64le" ]]; then
       case "$NOXSESSION" in
+         "tests-2.7")
+          python3.4 -m nox
+          ;;
+        "tests-3.4")
+          python3.4 -m nox
+          ;;
+        "tests-3.5")
+          python3.5 -m nox
+          ;;
         "tests-3.6")
           python3.6 -m nox
           ;;
-        "tests-3.7" | "lint" | "docs" )
+        "tests-3.7")
           python3.7 -m nox
           ;;
-        "tests-3.8")
+        "tests-3.8" | "lint" | "docs" )
           python3.8 -m nox
           ;;
       esac
