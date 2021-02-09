@@ -15,10 +15,36 @@ python: 3.8
 
 matrix:
   include:
+    - python: 2.7
+      env: NOXSESSION=tests-2.7
+    - python: pypy
+      env: NOXSESSION=tests-pypy
+    - python: pypy3
+      env: NOXSESSION=tests-pypy3
+    - python: 3.4
+      env: NOXSESSION=tests-3.4
+    - python: 3.5
+      env: NOXSESSION=tests-3.5
+    - python: 3.6
+      env: NOXSESSION=tests-3.6
+    - python: 3.7
+      env: NOXSESSION=tests-3.7
+    - python: 3.8
+      env: NOXSESSION=tests-3.8
     - env: NOXSESSION=lint
+    - env: NOXSESSION=docs
+    - python: 3.6
+      env: NOXSESSION=tests-3.6
+      arch: ppc64le
+    - python: 3.7
+      env: NOXSESSION=tests-3.7
+      arch: ppc64le
+    - python: 3.8
+      env: NOXSESSION=tests-3.8
+      arch: ppc64le
     - env: NOXSESSION=lint
       arch: ppc64le
-      python: 3.9
+      python: 3.7
     - env: NOXSESSION=docs
       arch: ppc64le
       python: 3.9
@@ -36,13 +62,9 @@ install:
           pyenv global  python3.6;
           python3.6 -m pip install nox
           ;;
-         "tests-3.7")
+         "tests-3.7" | "lint")
           pyenv global  python3.7;
           python3.7 -m pip install nox
-          ;;
-         "lint")
-          pyenv global  python3.9;
-          python3.9 -m pip install nox
           ;;
          "tests-3.8")
           pyenv global  python3.8;
@@ -63,14 +85,11 @@ script:
         "tests-3.6")
           python3.6 -m nox
           ;;
-        "tests-3.7")
+        "tests-3.7" | "lint")
           python3.7 -m nox
           ;;
         "tests-3.8")
           python3.8 -m nox
-          ;;
-        "lint")
-          python3.9 -m nox
           ;;
         "docs" )
           python3.9 -m nox
