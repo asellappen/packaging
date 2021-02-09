@@ -18,7 +18,7 @@ matrix:
     - env: NOXSESSION=lint
     - env: NOXSESSION=lint
       arch: ppc64le
-      python: 3.6
+      python: 3.7
     - env: NOXSESSION=docs
       arch: ppc64le
       python: 3.9
@@ -41,8 +41,8 @@ install:
           python3.7 -m pip install nox
           ;;
          "lint")
-          pyenv global  python3.9;
-          python3.9 -m pip install nox
+          pyenv global  python3.7;
+          python3.7 -m pip install nox
           ;;
          "tests-3.8")
           pyenv global  python3.8;
@@ -63,7 +63,7 @@ script:
         "tests-3.6")
           python3.6 -m nox
           ;;
-         "lint" | "tests-3.7")
+        "tests-3.7")
           python3.7 -m nox
           ;;
         "tests-3.8")
