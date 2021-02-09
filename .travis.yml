@@ -16,8 +16,9 @@ python: 3.8
 matrix:
   include:
     - env: NOXSESSION=lint
+    - env: NOXSESSION=lint
       arch: ppc64le
-      python: 3.9
+      python: 3.6
     - env: NOXSESSION=docs
       arch: ppc64le
       python: 3.9
