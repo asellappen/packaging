@@ -60,7 +60,7 @@ install:
           pyenv global  python3.6;
           python3.6 -m pip install nox
           ;;
-        "tests-3.7")
+         "lint" | "tests-3.7")
           pyenv global  python3.7;
           python3.7 -m pip install nox
           ;;
@@ -68,7 +68,7 @@ install:
           pyenv global  python3.8;
           python3.8 -m pip install nox
           ;;
-        "lint" | "docs" )
+         "docs" )
           pyenv global  python3.9;
           python3.9 -m pip install nox
           ;;
@@ -83,13 +83,13 @@ script:
         "tests-3.6")
           python3.6 -m nox
           ;;
-        "tests-3.7")
+         "lint" | "tests-3.7")
           python3.7 -m nox
           ;;
         "tests-3.8")
           python3.8 -m nox
           ;;
-        "lint" | "docs" )
+        "docs" )
           python3.9 -m nox
           ;;
       esac
